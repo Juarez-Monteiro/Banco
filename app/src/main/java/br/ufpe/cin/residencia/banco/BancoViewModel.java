@@ -8,6 +8,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.ufpe.cin.residencia.banco.conta.Conta;
@@ -19,6 +20,8 @@ public class BancoViewModel extends AndroidViewModel {
     public LiveData<List<Conta>> contas;
     private MutableLiveData<Conta> _contaAtual = new MutableLiveData<>();
     public LiveData<Conta> contaAtual = _contaAtual;
+    private MutableLiveData<List<Conta>> _listContaAtual = new MutableLiveData<>();
+    public LiveData<List<Conta>> listaContaAtual = _listContaAtual;
 
     public BancoViewModel(@NonNull Application application) {
         super(application);
@@ -61,6 +64,8 @@ public class BancoViewModel extends AndroidViewModel {
         new Thread(new Runnable() {
             @Override
             public void run() {
+        List<Conta> listaContas  = repository.buscarPeloNome(nomeCliente);
+        _listContaAtual.postValue(listaContas);
                           }
         }).start();
         //TODO implementar busca pelo nome do Cliente
@@ -70,7 +75,8 @@ public class BancoViewModel extends AndroidViewModel {
         new Thread(new Runnable() {
             @Override
             public void run() {
-
+                List<Conta> listaContas  = repository.buscarPeloCPF(cpfCliente);
+                _listContaAtual.postValue(listaContas);
             }
         }).start();
         //TODO implementar busca pelo CPF do Cliente
@@ -82,8 +88,10 @@ public class BancoViewModel extends AndroidViewModel {
             @Override
             public void run() {
                 Log.i("TAG", "Entrou!! " + numeroConta);
-                Conta conta =  repository.buscarPeloNumero(numeroConta);
-                _contaAtual.postValue(conta);
+                Conta conta = repository.buscarPeloNumero(numeroConta);
+               List<Conta> listConta = new ArrayList<>();
+                listConta.add(conta);
+               _listContaAtual.postValue(listConta);
             }
         }).start();
         //TODO implementar busca pelo número da Conta

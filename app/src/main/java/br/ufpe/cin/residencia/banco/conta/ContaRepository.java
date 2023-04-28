@@ -45,9 +45,9 @@ public class ContaRepository {
 
     @WorkerThread
     public List<Conta> buscarPeloCPF(String cpfCliente) {
-        dao.buscarPeloCPF(cpfCliente);
+
         //TODO implementar busca
-        return null;
+        return dao.buscarPeloCPF(cpfCliente);
     }
 
     @WorkerThread

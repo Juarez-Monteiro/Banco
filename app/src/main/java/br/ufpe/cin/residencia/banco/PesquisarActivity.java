@@ -38,8 +38,7 @@ public class PesquisarActivity extends AppCompatActivity {
         btnPesquisar.setOnClickListener(
                 v -> {
                     String oQueFoiDigitado = aPesquisar.getText().toString();
-                    //pego o ID od Radio selecionado
-                    int rdEscolhido = tipoPesquisa.getCheckedRadioButtonId();
+                        int rdEscolhido = tipoPesquisa.getCheckedRadioButtonId();
                     RadioButton radioButton = findViewById(rdEscolhido);
                     String buscarPor = radioButton.getText().toString();
 
@@ -66,7 +65,7 @@ public class PesquisarActivity extends AppCompatActivity {
         );
 
         //TODO atualizar o RecyclerView com resultados da busca na medida que encontrar
-        viewModel.contaAtual.observe(this, contas-> {
+        viewModel.listaContaAtual.observe(this, contas-> {
             Log.i("TAG", "onCreate: " + contas);
             adapter.submitList(contas);
         });

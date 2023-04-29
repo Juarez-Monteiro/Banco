@@ -41,29 +41,38 @@ public class EditarContaActivity extends AppCompatActivity {
         //TODO usar o número da conta passado via Intent para recuperar informações da conta
         viewModel.contaAtual.observe(this, conta -> {
                    if(conta != null) {
-                       Log.i("TAG", "eita ");
+                       Log.i("TAG", "entrou no if ");
                        campoCPF.setText(conta.cpfCliente);
-                       Log.i("TAG", "eita " + campoCPF);
+                       Log.i("TAG", "setText " + campoCPF);
                        campoNome.setText(conta.nomeCliente);
                        String saldo = String.valueOf(conta.saldo);
                        campoSaldo.setText(saldo);
                        campoNumero.setText(conta.numero);
                        this.contaEscolhida = conta;
-                   }else{
-                       Log.i("TAG", "deu ruim ");
                    }
             });
         btnAtualizar.setText("Editar");
         btnAtualizar.setOnClickListener(
                 v -> {
-
                     String nomeCliente = campoNome.getText().toString();
                     String cpfCliente = campoCPF.getText().toString();
                     String saldoConta = campoSaldo.getText().toString();
                     //TODO: Incluir validações aqui, antes de criar um objeto Conta. Se todas as validações passarem, aí sim monta um objeto Conta.
                     //TODO: chamar o método que vai atualizar a conta no Banco de Dados
-                    if(cpfCliente.isEmpty() || cpfCliente.length() < 11 || !checkNumeric(cpfCliente)){
-                        Toast.makeText(this, "Infome Cpf valido", Toast.LENGTH_SHORT).show();
+//                    if(cpfCliente.isEmpty() || cpfCliente.length() < 11 || !checkNumeric(cpfCliente)){
+//                        Toast.makeText(this, "Infome Cpf valido", Toast.LENGTH_SHORT).show();
+//                        return;
+//                    }
+                    if(nomeCliente.isEmpty()){
+                        campoNome.setError("Digite novo nome");
+                        return;
+                    }
+                    if(cpfCliente.length() != 11){
+                        campoCPF.setError("CPF deve conter 11 caracteres numéricos");
+                        return;
+                    }
+                    if(saldoConta.isEmpty()){
+                        campoSaldo.setError("Saldo dever ser maior que R$ 0,01");
                         return;
                     }
                     try {
@@ -91,16 +100,5 @@ public class EditarContaActivity extends AppCompatActivity {
             Toast.makeText(this, "Conta removida com sucesso!", Toast.LENGTH_SHORT).show();
 
         });
-    }
-    private boolean checkNumeric(String value) {
-        if (value == null || value.isEmpty()) {
-            return false;
-        }
-        for (int i = 0; i < value.length(); i++) {
-            if (!Character.isDigit(value.charAt(i))) {
-                return false;
-            }
-        }
-        return true;
     }
 }

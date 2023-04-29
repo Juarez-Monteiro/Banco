@@ -82,7 +82,7 @@ public class BancoViewModel extends AndroidViewModel {
         //TODO implementar busca pelo CPF do Cliente
     }
 
-    void buscarPeloNumero(String numeroConta) {
+    List<Conta> buscarPeloNumero(String numeroConta) {
         Log.i("TAG", "buscarPeloNumero " + numeroConta);
         new Thread(new Runnable() {
             @Override
@@ -95,6 +95,7 @@ public class BancoViewModel extends AndroidViewModel {
             }
         }).start();
         //TODO implementar busca pelo número da Conta
+        return null;
     }
     public double saldoTotalBanco() {
         double saldoTotal = 0;

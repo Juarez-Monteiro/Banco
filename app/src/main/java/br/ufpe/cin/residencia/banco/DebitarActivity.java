@@ -9,6 +9,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.List;
+
+import br.ufpe.cin.residencia.banco.conta.Conta;
+
 //Ver anotações TODO no código
 public class DebitarActivity extends AppCompatActivity {
     BancoViewModel viewModel;
@@ -37,7 +41,8 @@ public class DebitarActivity extends AppCompatActivity {
                     String numOrigem = numeroContaOrigem.getText().toString();
                     //TODO lembrar de implementar validação do número da conta e do valor da operação, antes de efetuar a operação de débito.
                     if (numOrigem.isEmpty()){
-                        numeroContaOrigem.setError("Digite número da conta vei!! ");
+                        numeroContaOrigem.setError("Digite o número da conta vei!!");
+                        return;
                     }
                     // O método abaixo está sendo chamado, mas precisa ser implementado na classe BancoViewModel para funcionar.
                     double valor = Double.valueOf(valorOperacao.getText().toString());

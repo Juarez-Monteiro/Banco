@@ -59,10 +59,6 @@ public class EditarContaActivity extends AppCompatActivity {
                     String saldoConta = campoSaldo.getText().toString();
                     //TODO: Incluir validações aqui, antes de criar um objeto Conta. Se todas as validações passarem, aí sim monta um objeto Conta.
                     //TODO: chamar o método que vai atualizar a conta no Banco de Dados
-//                    if(cpfCliente.isEmpty() || cpfCliente.length() < 11 || !checkNumeric(cpfCliente)){
-//                        Toast.makeText(this, "Infome Cpf valido", Toast.LENGTH_SHORT).show();
-//                        return;
-//                    }
                     if(nomeCliente.isEmpty()){
                         campoNome.setError("Digite novo nome");
                         return;

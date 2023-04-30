@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 //Ver anotações TODO no código
 public class TransferirActivity extends AppCompatActivity {
@@ -39,6 +40,7 @@ public class TransferirActivity extends AppCompatActivity {
                     double valor = Double.valueOf(valorOperacao.getText().toString());
                     viewModel.transferir(numOrigem, numDestino, valor);
                     finish();
+                    Toast.makeText(this, "Transferencia no valor de R$ " +valor+" realizado com sucesso!", Toast.LENGTH_SHORT).show();
                 }
         );
 

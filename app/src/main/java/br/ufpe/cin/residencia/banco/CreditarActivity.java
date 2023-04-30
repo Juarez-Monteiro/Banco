@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import br.ufpe.cin.residencia.banco.conta.Conta;
 import br.ufpe.cin.residencia.banco.conta.ContaDAO;
@@ -48,6 +49,7 @@ public class CreditarActivity extends AppCompatActivity {
                     double valor = Double.valueOf(valorOperacao.getText().toString());
                     viewModel.creditar(numOrigem,valor);
                     finish();
+                    Toast.makeText(this, "Credito no valor de R$ " +valor+" realizado com sucesso!", Toast.LENGTH_SHORT).show();
                 }
         );
     }

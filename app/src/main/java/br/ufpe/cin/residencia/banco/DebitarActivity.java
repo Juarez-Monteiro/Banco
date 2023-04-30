@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -48,6 +49,7 @@ public class DebitarActivity extends AppCompatActivity {
                     double valor = Double.valueOf(valorOperacao.getText().toString());
                     viewModel.debitar(numOrigem, valor);
                     finish();
+                    Toast.makeText(this, "Debito no valor de R$ " +valor+" realizado com sucesso!", Toast.LENGTH_SHORT).show();
                 }
         );
     }

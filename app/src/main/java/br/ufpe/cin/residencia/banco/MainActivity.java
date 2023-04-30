@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
                 this,
                 listaContas -> {
                     double saldoBanco = viewModel.saldoTotalBanco();
-                    totalBanco.setText("R"+NumberFormat.getCurrencyInstance().format(saldoBanco));
+                    totalBanco.setText(NumberFormat.getCurrencyInstance().format(saldoBanco));
                 }
         );
 

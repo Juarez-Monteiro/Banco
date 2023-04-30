@@ -48,3 +48,6 @@ Funcionalidades do app BANCO
 
 15-  Na classe MainActivity utilizando do método observer para sempre atualizar 
      o saldo total do Banco sempre que houver modificação.
+     
+     
+     Link para vídeo vídeo https://youtu.be/rFfsx_oqQ1Y
